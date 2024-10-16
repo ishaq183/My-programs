@@ -6,6 +6,16 @@ bool areTheyAnagram(string string1,string string2){
     if(string1.length()!=string2.length()){
         return false;
     }
+    for (int i = 0; i < string1.length(); ++i) {
+        // Check if the character is an uppercase letter
+        if (string1[i] >= 'A' && string1[i] <= 'Z') {
+            string1[i] = string1[i] + 32; // Convert to lowercase
+        }
+        if(string2[i]>='A'&& string2[i]<='Z'){
+            string2[i]= string2[i]+32;
+        }    
+    }
+
     int counter1[26]={0};
     int counter2[26]={0};  
     for(int i=0;i<string1.length();i++){
