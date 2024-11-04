@@ -1,27 +1,36 @@
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <ctime>
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+#include<string>
+using namespace std;
 
-std::string generatePassword(int length) {
-    const std::string characters =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}|[]\\:;\"'<>,.?/";
-    std::string password;
-    srand(time(nullptr)); // Seed the random number generator
-
-    for (int i = 0; i < length; ++i) {
-        int randomIndex = rand() % characters.length();
-        password += characters[randomIndex];
+string getpassword(int length){
+   string password="";
+   string characters=
+       "aquickbrownfoxjumpoverthelezydogABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$_&-+(\)/\"%";
+  
+   int charSize=characters.size();
+   srand(time(0));
+  
+   for(int i=0 ; i<length ; i++){
+      int randomIndex=rand()%charSize;
+      password=password+characters[randomIndex];
     }
-
     return password;
 }
 
-int main() {
-    int length;
-    std::cout << "Enter the length of the password: ";
-    std::cin >> length;
-    std::cout << "Generated password: " << generatePassword(length) << std::endl;
 
+int main(){
+    char choice;
+    do{
+        int length;
+        cout << "Enter the length of Password: ";
+        cin >> length;
+        string password=getpassword(length);
+        cout << "Password is " <<password<< endl;
+        cout << "\nCan you run program again(Y/N): " << endl;
+        cin >> choice;
+    }while(choice=='y'||choice=='Y');
+    cout << "Thank you" << endl;
     return 0;
 }
